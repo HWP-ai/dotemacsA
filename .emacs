@@ -40,7 +40,7 @@
 (setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
 (setq sentence-end-double-space nil)
 ;;设置字体
-(set-default-font "文泉驿等宽正黑-12")
+(set-default-font "文泉驿等宽正黑-10")
 ;;不产生临时文件
 (setq-default make-backup-file nil);
 ;;开启ido（输入文件提示）
@@ -87,7 +87,7 @@
 ;;(setq display-time-interval 10);;时间更新频率
 ;;(display-time-mode 1)
 ;;底边栏-行列号
-;;(column-number-mode t)
+(column-number-mode t)
 ;;字体
 ;;(set-default-font "10x5")
 ;;配色-背景
@@ -112,8 +112,8 @@
 ;;-------------------- Color theme --------------------
 ;;     配色管理。
 ;;-----------------------------------------------------
-(require 'color-theme)
-(color-theme-gray30)
+;; (require 'color-theme)
+;; (color-theme-gray30)
 
 ;;-------------------- 鼠标 --------------------
 ;;     鼠标自动弹开指针，滚动3行
@@ -166,7 +166,7 @@
    (if mark-active (list (region-beginning) (region-end))
      (list (line-beginning-position)
            (line-beginning-position 2)))))
-(global-set-key (kbd "C-c C-c") 'comment-or-uncomment-region)
+(global-set-key (kbd "C-.") 'comment-or-uncomment-region)
 
 ;;-------------------- 重定义删除行 --------------------
 ;;     T_T目前不知道作用
@@ -325,14 +325,15 @@
 ;; (setq w3m-input-coding-system 'chinese-iso-8bit)
 ;; (setq w3m-output-coding-system 'chinese-iso-8bit)
 (custom-set-variables
-  ;; custom-set-variables was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
- )
+ ;; custom-set-variables was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
+ '(ansi-color-names-vector ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#ad7fa8" "#8cc4ff" "#eeeeec"])
+ '(custom-enabled-themes (quote (wheatgrass))))
 (custom-set-faces
-  ;; custom-set-faces was added by Custom.
-  ;; If you edit it by hand, you could mess it up, so be careful.
-  ;; Your init file should contain only one such instance.
-  ;; If there is more than one, they won't work right.
+ ;; custom-set-faces was added by Custom.
+ ;; If you edit it by hand, you could mess it up, so be careful.
+ ;; Your init file should contain only one such instance.
+ ;; If there is more than one, they won't work right.
  )
