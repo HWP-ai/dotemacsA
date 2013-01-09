@@ -1,6 +1,6 @@
 ;;; auto-header.el --- Support for automatically updated file headers.
 
-;; Copyright (C) 1996, 1998-2002, 2004, 2011, Espen Skoglund.
+;; Copyright (C) 1996, 1998-2002, 2004, 2011-2012, Espen Skoglund.
 
 ;; Author: Espen Skoglund <esk@ira.uka.de>
 ;; Keywords: file headers
@@ -123,6 +123,11 @@ Defaults to the address part of `user-mail-address'."
 
 (defcustom header-sysu-name nil
   "* My Name "
+  :type 'string
+  :group 'auto-header)
+
+(defcustom header-project-name nil
+  "* The name of project."
   :type 'string
   :group 'auto-header)
 
@@ -309,13 +314,13 @@ HOWEVER CAUSED AND ON ANY THEORY OF LIABILITY, WHETHER IN CONTRACT, STRICT
 LIABILITY, OR TORT (INCLUDING NEGLIGENCE OR OTHERWISE) ARISING IN ANY WAY
 OUT OF THE USE OF THIS SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF
 SUCH DAMAGE."))
-    ("blank" .       ("" ""))
-    ("text-1" .      (nil (concat 
-                           (file-name-nondirectory (buffer-file-name)) "  Version 1.00  <"  (current-time-string (nth 6 (file-attributes (buffer-file-name)))) ">\n\n"
-                           "Copyright(C) 2011-2012 " header-sysu-name "(" header-sysu-sno ")  All rights reserved.\n"
-                           header-sysu-name " is a student majoring in Software Engineering,\n"
-                           "from the School of Software, \n"
-                           "SUN YAT-SEN UNIVERSITY, GZ 510006, P. R. China" )))
+    ("blank" .  ("" ""))
+    ("text-1" . (nil (concat "  "
+                      header-full-name " is a student majoring in Software Engineering,\n  "
+                      "from the School of Software, \n  "
+                      "SUN YAT-SEN UNIVERSITY, GZ 510006, P. R. China" )))
+    ("text-2" . (nil (concat "  "
+                      header-project-name ", 2012 by " header-full-name " is licensed under a\n  Creative Commons 署名-相同方式共享 2.5 中国大陆 License.")))
     )
   "List of header fields -- their text and their default value.")
 

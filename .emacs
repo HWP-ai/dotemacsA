@@ -24,7 +24,7 @@
 (global-set-key [(f8)] 'gud-step)
 (global-set-key [(f7)] 'gud-next)
 (global-set-key [(f4)] 'gud-until);;Recover kmacro-end-or-call-macro
-(global-set-key [(f11)] 'gud-remove)
+;; (global-set-key [(f11)] 'gud-remove)
 (global-set-key "\C-cf" 'gud-finish)
 (global-set-key "\C-cs" 'gud-start)
 (global-set-key "\C-cg" 'gud-go)
@@ -40,7 +40,11 @@
 (setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
 (setq sentence-end-double-space nil)
 ;;设置字体
-(set-default-font "文泉驿等宽正黑-10")
+;;(set-default-font "文泉驿等宽正黑-12")
+;;(set-frame-font "Monaco-10")
+;;(set-fontset-font "fontset-default" 'han "文泉驿等宽正黑-12")
+;;取消滚动条
+(customize-set-variable 'scroll-bar-mode nil);
 ;;不产生临时文件
 (setq-default make-backup-file nil);
 ;;开启ido（输入文件提示）
@@ -69,6 +73,21 @@
 (set-scroll-bar-mode nil)
 ;;显示图片
 (auto-image-file-mode)
+;;设置标题
+(setq frame-title-format "%f@emacs")
+;;全屏模式
+(defun toggle-fullscreen (&optional f)
+  (interactive)
+  (let ((current-value (frame-parameter nil 'fullscreen)))
+    (set-frame-parameter nil 'fullscreen
+                         (if (equal 'fullboth current-value)
+                             (if (boundp 'old-fullscreen) old-fullscreen nil)
+                           (progn (setq old-fullscreen current-value)
+                                  'fullboth)))))
+(global-set-key [f11] 'toggle-fullscreen)
+(add-hook 'emacs-startup-hook 'toggle-fullscreen)
+;;取消菜单
+(tool-bar-mode 0)
 
 ;;-------------------- 代码缩写 --------------------
 ;;(add-to-list 'load-path "~/.emacs-elisp/msf-abbrev")
@@ -114,6 +133,7 @@
 ;;-----------------------------------------------------
 ;; (require 'color-theme)
 ;; (color-theme-gray30)
+(add-to-list 'custom-theme-load-path "~/.emacs-elisp/themes/")
 
 ;;-------------------- 鼠标 --------------------
 ;;     鼠标自动弹开指针，滚动3行
@@ -131,15 +151,17 @@
 ;;     from 王垠
 ;;----------------------------------------------------
 (setq font-encoding-alist
-(append '(("MuleTibetan-0" (tibetan . 0))
-("GB2312" (chinese-gb2312 . 0))
-("JISX0208" (japanese-jisx0208 . 0))
-("JISX0212" (japanese-jisx0212 . 0))
-("VISCII" (vietnamese-viscii-lower . 0))
-("KSC5601" (korean-ksc5601 . 0))
-("MuleArabic-0" (arabic-digit . 0))
-("MuleArabic-1" (arabic-1-column . 0))
-("MuleArabic-2" (arabic-2-column . 0))) font-encoding-alist))
+      (append '(("MuleTibetan-0" (tibetan . 0))
+                ("GB2312" (chinese-gb2312 . 0))
+                ("BIG5" (big5 . 0))
+                ("JISX0208" (japanese-jisx0208 . 0))
+                ("JISX0212" (japanese-jisx0212 . 0))
+                ("VISCII" (vietnamese-viscii-lower . 0))
+                ("KSC5601" (korean-ksc5601 . 0))
+                ("MuleArabic-0" (arabic-digit . 0))
+                ("MuleArabic-1" (arabic-1-column . 0))
+                ("MuleArabic-2" (arabic-2-column . 0))) font-encoding-alist))
+(require `unicad)
 
 ;;-------------------- Smart Compile --------------------
 ;;    Load the smart-compile+ .                         .
@@ -330,10 +352,48 @@
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  '(ansi-color-names-vector ["#212526" "#ff4b4b" "#b4fa70" "#fce94f" "#729fcf" "#ad7fa8" "#8cc4ff" "#eeeeec"])
- '(custom-enabled-themes (quote (wheatgrass))))
+ '(column-number-mode t)
+ '(custom-enabled-themes (quote (zenburn)))
+ '(custom-safe-themes (quote ("3580fb8e37ee9e0bcb60762b81260290329a97f3ca19249569d404fce422342f" default)))
+ '(delete-selection-mode nil)
+ '(mark-even-if-inactive t)
+ '(menu-bar-mode nil)
+ '(safe-local-variable-values (quote ((todo-categories "test" "Personal") (encoding . utf8))))
+ '(scroll-bar-mode nil)
+ '(show-paren-mode t)
+ '(tool-bar-mode nil)
+ '(transient-mark-mode 1))
 (custom-set-faces
  ;; custom-set-faces was added by Custom.
  ;; If you edit it by hand, you could mess it up, so be careful.
  ;; Your init file should contain only one such instance.
  ;; If there is more than one, they won't work right.
  )
+
+
+;;-------------------- Python --------------------
+
+
+;;------------------------- Org-mode -------------------------
+(setq org-hide-leading-stars t)
+(define-key global-map "\C-ca" 'org-agenda)
+(setq org-log-done 'time)
+
+(defun insert-loli ()
+  "Insert the latest loli into current buffer."
+  (interactive)
+  (newline)
+  (let ((filename (shell-command-to-string
+                   "readlink -n ~/loliday/latest")))
+    (message filename)
+    (insert-image (create-image filename)))
+  (start-process "loli-process" "*Messages*"  "~/loliday/loli.sh")
+  (newline)
+  (newline))
+(global-set-key (kbd "C-h 0") `insert-loli)
+
+(add-hook 'eshell-proc-load-hook
+          '(lambda nil
+             (insert-loli)
+             (eshell-send-input "*eshell*")
+             ))
