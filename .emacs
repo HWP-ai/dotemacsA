@@ -6,7 +6,7 @@
 ;; from the School of Software, 
 ;; SUN YAT-SEN UNIVERSITY, GZ 510006, P. R. China
 ;; ltaoist@163.com 
-;; ltaoist.ludyun.org
+;; http://l-ts.me
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
 (add-to-list 'load-path (expand-file-name "~/.emacs-elisp"))
@@ -150,18 +150,24 @@
 ;;     设置默认解码顺序
 ;;     from 王垠
 ;;----------------------------------------------------
-(setq font-encoding-alist
-      (append '(("MuleTibetan-0" (tibetan . 0))
-                ("GB2312" (chinese-gb2312 . 0))
-                ("BIG5" (big5 . 0))
-                ("JISX0208" (japanese-jisx0208 . 0))
-                ("JISX0212" (japanese-jisx0212 . 0))
-                ("VISCII" (vietnamese-viscii-lower . 0))
-                ("KSC5601" (korean-ksc5601 . 0))
-                ("MuleArabic-0" (arabic-digit . 0))
-                ("MuleArabic-1" (arabic-1-column . 0))
-                ("MuleArabic-2" (arabic-2-column . 0))) font-encoding-alist))
+;; (setq font-encoding-alist
+;;       (append '(("MuleTibetan-0" (tibetan . 0))
+;;                 ("GB2312" (chinese-gb2312 . 0))
+;;                 ("BIG5" (big5 . 0))
+;;                 ("JISX0208" (japanese-jisx0208 . 0))
+;;                 ("JISX0212" (japanese-jisx0212 . 0))
+;;                 ("VISCII" (vietnamese-viscii-lower . 0))
+;;                 ("KSC5601" (korean-ksc5601 . 0))
+;;                 ("MuleArabic-0" (arabic-digit . 0))
+;;                 ("MuleArabic-1" (arabic-1-column . 0))
+;;                 ("MuleArabic-2" (arabic-2-column . 0))) font-encoding-alist))
 (require `unicad)
+;;写文件的编码方式
+(set-buffer-file-coding-system 'utf-8)
+;;新建文件的编码方式
+(setq default-buffer-file-coding-system 'utf-8)
+;;读取或写入文件名的编码方式
+(setq file-name-coding-system 'utf-8) 
 
 ;;-------------------- Smart Compile --------------------
 ;;    Load the smart-compile+ .                         .
@@ -397,3 +403,18 @@
              (insert-loli)
              (eshell-send-input "*eshell*")
              ))
+;;-------------------- cscope --------------------
+(add-hook 'c-mode-common-hook
+	  '(lambda ()
+	    (require 'xcscope)))
+
+;;; Always do syntax highlighting
+(global-font-lock-mode 1)
+
+;;; Also highlight parens
+(setq show-paren-delay 0
+      show-paren-style 'parenthesis)
+(show-paren-mode 1)
+
+;;; This is the binary name of my scheme implementation
+(setq scheme-program-name "guile")
