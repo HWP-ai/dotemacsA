@@ -1,11 +1,9 @@
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
-;; .emacs  Version 1.00  <Sat Oct  1 08:26:46 2011>
+;; .emacs  Version 1.01  <Sat Oct  1 08:26:46 2011>
 ;; 
-;; Copyright(C) 2011-2012 Mo Norman(11331247)  All rights reserved.
-;; Mo Norman is a student majoring in Software Engineering,
-;; from the School of Software, 
-;; SUN YAT-SEN UNIVERSITY, GZ 510006, P. R. China
-;; ltaoist@163.com 
+;; Mo Norman
+;; Licensed under Creative Commons Attribution-NonCommercial-ShareAlike 
+;; 3.0 Unported License
 ;; http://l-ts.me
 ;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;;
 
