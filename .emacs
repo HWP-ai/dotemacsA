@@ -388,11 +388,11 @@
   (newline))
 (global-set-key (kbd "C-h 0") `insert-loli)
 
-(add-hook 'eshell-proc-load-hook
-          '(lambda nil
-             (insert-loli)
-             (eshell-send-input "*eshell*")
-             ))
+;(add-hook 'eshell-proc-load-hook
+;          '(lambda nil
+;             (insert-loli)
+;             (eshell-send-input "*eshell*")
+;             ))
 ;;-------------------- cscope --------------------
 (add-hook 'c-mode-common-hook
 	  '(lambda ()
@@ -414,5 +414,5 @@
 ;;-----------------------------------------------------
 ;; (require 'color-theme)
 ;; (color-theme-gray30)
-(add-to-list 'custom-theme-load-path "~/.emacs-elisp/themes/dracula")
+(add-to-list 'custom-theme-load-path "~/.emacs-elisp/themes")
 (load-theme 'dracula t)
