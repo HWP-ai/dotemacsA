@@ -126,13 +126,6 @@
 ;;(set-face-background 'holiday-face "slate blue")
 ;;(set-face-foreground 'holiday-face "white")))
 
-;;-------------------- Color theme --------------------
-;;     配色管理。
-;;-----------------------------------------------------
-;; (require 'color-theme)
-;; (color-theme-gray30)
-(add-to-list 'custom-theme-load-path "~/.emacs-elisp/themes/")
-
 ;;-------------------- 鼠标 --------------------
 ;;     鼠标自动弹开指针，滚动3行
 ;;---------------------------------------------
@@ -159,7 +152,7 @@
 ;;                 ("MuleArabic-0" (arabic-digit . 0))
 ;;                 ("MuleArabic-1" (arabic-1-column . 0))
 ;;                 ("MuleArabic-2" (arabic-2-column . 0))) font-encoding-alist))
-(require `unicad)
+;;(require `unicad)
 ;;写文件的编码方式
 (set-buffer-file-coding-system 'utf-8)
 ;;新建文件的编码方式
@@ -265,7 +258,6 @@
 ;    Set up the html-helper-mode.                          .
 ;-----------------------------------------------------------
 (setq html-helper-build-new-buffer nil)
-(setq html-helper-address-string "<a href= \"http://ltaoist.ludyun.org\">Mo Norman(LTaoist)<\\a>")
 
 ;;-------------------- mmm mode --------------------
 ;     Load the mmm-mode                            .
@@ -416,3 +408,11 @@
 
 ;;; This is the binary name of my scheme implementation
 (setq scheme-program-name "guile")
+
+;;-------------------- Color theme --------------------
+;;     配色管理。
+;;-----------------------------------------------------
+;; (require 'color-theme)
+;; (color-theme-gray30)
+(add-to-list 'custom-theme-load-path "~/.emacs-elisp/themes/dracula")
+(load-theme 'dracula t)
