@@ -7,7 +7,7 @@ Setup
 -----
 
     git clone https://github.com/LTaoist/dot-emacs.git
-    cd My-Emacs-Configure-File
+    cd dot-emacs
 	cp .emacs ~/
 	cp -r .emacs-elisp ~/
 
