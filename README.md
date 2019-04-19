@@ -11,3 +11,7 @@ Setup
 	cp .emacs ~/
 	cp -r .emacs-elisp ~/
 
+Screenshot
+----------
+
+![](screenshot.png)
