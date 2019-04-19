@@ -9,6 +9,9 @@
 
 (add-to-list 'load-path (expand-file-name "~/.emacs-elisp"))
 
+(setq fancy-splash-image "~/.emacs-elisp/mnls.jpg")
+
+
 ;;-------------------- 按键设置 --------------------
 ;;speedbar
 (global-set-key [f6] 'speedbar)
@@ -38,7 +41,7 @@
 (setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
 (setq sentence-end-double-space nil)
 ;;设置字体
-;;(set-default-font "文泉驿等宽正黑-12")
+(set-default-font "黑体-12")
 ;;(set-frame-font "Monaco-10")
 ;;(set-fontset-font "fontset-default" 'han "文泉驿等宽正黑-12")
 ;;取消滚动条
