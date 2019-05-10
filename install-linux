@@ -1,0 +1,4 @@
+#!/bin/bash
+
+ln -s `pwd`/setup1 ~/.emacs
+ln -s `pwd`/lisp ~/.emacs-elisp

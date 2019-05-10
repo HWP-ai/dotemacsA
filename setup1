@@ -41,7 +41,7 @@
 (setq sentence-end "\\([。！？]\\|……\\|[.?!][]\"')}]*\\($\\|[ \t]\\)\\)[ \t\n]*")
 (setq sentence-end-double-space nil)
 ;;设置字体
-(set-default-font "黑体-12")
+;;(set-default-font "黑体-12")
 ;;(set-frame-font "Monaco-10")
 ;;(set-fontset-font "fontset-default" 'han "文泉驿等宽正黑-12")
 ;;取消滚动条
@@ -418,4 +418,6 @@
 ;; (require 'color-theme)
 ;; (color-theme-gray30)
 (add-to-list 'custom-theme-load-path "~/.emacs-elisp/themes")
-(load-theme 'dracula t)
+;;(load-theme 'dracula t)
+(load-theme 'blue-sea t t)
+(enable-theme 'blue-sea)
