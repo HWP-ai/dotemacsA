@@ -13,4 +13,4 @@ Setup
 Screenshot
 ----------
 
-![](scheenshot/screenshot.png)
+![](screenshot/screenshot.png)
