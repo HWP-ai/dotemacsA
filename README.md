@@ -1,7 +1,7 @@
-LTaoist's Emacs Configure File 
+dotemacsA
 ==============================
 
-Just for backup :-)
+THE available emacs configure dotemacsA
 
 Keys
 ----
