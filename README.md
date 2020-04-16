@@ -30,8 +30,8 @@ C-c C-p Copy a file or a directory.
 Setup
 -----
 
-    git clone https://github.com/LTaoist/dot-emacs.git
-    cd dot-emacs
+    git clone https://github.com/dist1/dotemacsA.git
+    cd dotemacsA
     ./install-linux
 
 Screenshot
